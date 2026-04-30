@@ -26,6 +26,13 @@ From: nvidia/cuda:12.1.1-devel-ubuntu22.04
     --index-url https://download.pytorch.org/whl/cu121
 
     uv pip install --system \
+    diffusers accelerate transformers \
+    peft safetensors \
+    sentencepiece bitsandbytes
+
+    uv pip install xformers --system --index-url https://download.pytorch.org/whl/cu121
+
+    uv pip install --system \
     braceexpand filelock fsspec Jinja2 MarkupSafe \
     mpmath networkx numpy pillow PyYAML sympy \
     tqdm triton typing_extensions webdataset \
