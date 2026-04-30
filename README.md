@@ -5,7 +5,7 @@ A small utility repo for building Singularity `.sif` container images via GitHub
 ## How it works
 
 ```
-Push .def file → GitHub Actions builds .sif → Download artifact → Upload to HPC
+Push .def file → GitHub Actions builds .sif → Download artifact → Upload to HPC(or wget on hpc)
 ```
 
 Singularity images are built automatically in a free GitHub-hosted Linux VM. You never need root access locally, and nothing heavy is stored on your machine.
@@ -29,10 +29,15 @@ hpc-containers/
 1. Write a `.def` file and place it in `envs/`
 2. Push to GitHub
 3. Go to **Actions** tab → wait for build to finish (~20 min)
-4. Download the artifact zip → extract your `.sif`
+4. Download the sif from released url
 
 ## Uploading to HPC (NCHC)
 
+```bash
+wget <sif_url>
+```
+
+with sftp:
 ```bash
 sftp <your_username>@140.110.148.5
 sftp> put aiart.sif
