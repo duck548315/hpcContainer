@@ -21,11 +21,15 @@ jobs:
             sudo singularity build outputs/${name}.sif $def
           done
 
-      - name: Upload to Release
-        uses: softprops/action-gh-release@v3
-        with: 
-          files: outputs/*.sif
-          tag_name: latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # change to your own huggingface repo name and token
+      - name: Upload to HuggingFace
+        run: |
+          pip install huggingface_hub
+          for sif in outputs/*.sif; do
+            huggingface-cli upload \
+              nullsky/hpcContainer \
+              $sif \
+              --repo-type dataset \
+              --token ${{ secrets.HF_TOKEN }}
+          done
         
