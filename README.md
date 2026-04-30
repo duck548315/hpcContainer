@@ -54,7 +54,7 @@ huggingface.co → New Dataset → name: hpc-containers → Private
 
 ```bash
 # on the NCHC login node directly:
-huggingface-cli download \
+hf download \
   <your_hf_username>/hpc-containers \
   aiart.sif \
   --repo-type dataset \
