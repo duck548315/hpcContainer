@@ -16,7 +16,7 @@ jobs:
           mkdir -p outputs
           for def in defs/*.def; do
             name=$(basename $def .def)
-            singularity build --fakeroot outputs/${name}.sif $def
+            sudo singularity build outputs/${name}.sif $def
           done
 
       - name: Make SIF artifacts
